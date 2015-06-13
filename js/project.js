@@ -14,4 +14,8 @@ $(document).ready(function(){
         $('#lendwhen-txt').val('');
         $('#new-lend').hide();
     });
+    
+    $('#lend-btn').click(function(){
+        alert('test');
+    });
 });
