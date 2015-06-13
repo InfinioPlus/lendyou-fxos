@@ -117,8 +117,12 @@ $(document).ready(function(){
                      
                      $('#lends-list li').click(function(){
                         var index = $(this).parent().children().index(this);
-                        deleteLend(primaryKeys[index]);
-                        getLends();
+                        
+                        var r = confirm('Are you sure you want to delete current record?');
+                        if (r == true) {
+                            deleteLend(primaryKeys[index]);
+                            getLends();
+                        }
                     });
                 }
             };
