@@ -1,0 +1,15 @@
+{
+  "name": "Battery",
+  "description": "Battery ofrece una buena plantilla para un indicador de batería / carga in-app con diferentes opciones de visualización, además de las ideas de lo que podría ser cambiado una vez que el nivel de la batería esté bajo.",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "/images/icon-128.png",
+    "512": "/images/icon-512.png"
+  },
+  "developer": {
+    "name": "Harsh Vardhan & Jorge Gomez",
+    "url": "https://github.com/royalharsh , https://github.com/GhostAlgorithm/lendyou"
+  },
+  "permissions": {
+  }
+}
