@@ -13,16 +13,20 @@ $(document).ready(function(){
     });
     
     $('#close-btn').click(function(){
-        $('#lendwhat-txt').val('');
-        $('#lendto-txt').val('');
-        $('#lendwhen-txt').val('');
-        $('#new-lend').hide();
+        clearForm();
     });
     
     $('#lend-btn').click(function(){
         addLend($('#lendwhat-txt').val(), $('#lendto-txt').val(), $('#lendwhen-txt').val());
         getLends();
     });
+    
+    function clearForm(){
+        $('#lendwhat-txt').val('');
+        $('#lendto-txt').val('');
+        $('#lendwhen-txt').val('');
+        $('#new-lend').hide();
+    }
     
     function databaseExists(){
         var request = indexedDB.open('lendyou6');
@@ -66,6 +70,7 @@ $(document).ready(function(){
          
             requestAdd.onsuccess = function(e) {
                 alert('Lend added successfully');
+                clearForm();
             };
          
             requestAdd.onfailure = function(e) {
