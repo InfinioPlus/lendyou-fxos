@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                    <a href="#" class="btn btn-info btn-lg btn-block"> 
+                    <a href="#" class="btn btn-info btn-lg btn-block" id="new-lend-btn"> 
                         Add new Lend 
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
@@ -30,7 +30,7 @@
             </div>
             
             <!-- row that contains the form for adding a new lend -->
-            <div class="row">
+            <div class="row" id="new-lend">
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -39,16 +39,16 @@
                     
                         <div class="panel-body">
                             <label class="control-label">Lend:</label> 
-                            <input type="text" class="form-control" />
+                            <input type="text" class="form-control" id="lendwhat-txt" />
                             
                             <br/>
                             <label class="control-label">Lend to:</label> 
-                            <input type="text" class="form-control" />
+                            <input type="text" class="form-control" id="lendto-txt" />
                             
                             <br/>
                             <label class="control-label">Date:</label> 
                             <div class="input-group date">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" id="lendwhen-txt">
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-th"></i>
                                 </span>
@@ -64,7 +64,7 @@
                                 </div>
                         
                                 <div class="col-xs-6">
-                                    <a href="#" class="btn btn-danger btn-block"> 
+                                    <a href="#" class="btn btn-danger btn-block" id="close-btn"> 
                                         Close 
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </a>
