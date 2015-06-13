@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var primaryKeys = [];
     databaseExists();
     getLends();
 
@@ -92,6 +93,8 @@ $(document).ready(function(){
         var request = indexedDB.open('lendyou6');
         request.onsuccess = function(e)
         {
+            primaryKeys = [];
+            
             idb = e.target.result;
             var transaction = idb.transaction('lend', IDBTransaction.READ_ONLY);
             var objectStore = transaction.objectStore('lend');
@@ -104,14 +107,52 @@ $(document).ready(function(){
                     html += '<li class="list-group-item"> <a href="#">';
                     html += 'Lend my ' + cursor.value.lendwhat + ' to ' + cursor.value.lendto + ' on ' + cursor.value.lendwhen;
                     html += '<span class="pull-right"><span class="glyphicon glyphicon-remove"></span></span></a></li>';
-                
+                    primaryKeys.push(cursor.primaryKey);
                     cursor.continue();
                 }
                 else
                 {
                     // we fall here when all entries are displayed
                      $('#lends-list').html(html);
+                     
+                     $('#lends-list li').click(function(){
+                        var index = $(this).parent().children().index(this);
+                        deleteLend(primaryKeys[index]);
+                        getLends();
+                    });
                 }
+            };
+        };
+    }
+    
+    function deleteLend(index){
+        var indexedDB = window.indexedDB || window.webkitIndexedDB || window.msIndexedDB;
+        var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange;
+        var openCopy = indexedDB && indexedDB.open;
+ 
+        var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+ 
+        if (IDBTransaction)
+        {
+            IDBTransaction.READ_WRITE = IDBTransaction.READ_WRITE || 'readwrite';
+            IDBTransaction.READ_ONLY = IDBTransaction.READ_ONLY || 'readonly';
+        }
+    
+        var request = indexedDB.open('lendyou6');
+        request.onsuccess = function(e)
+        {
+            var idb = e.target.result;
+            var objectStore = idb.transaction('lend', IDBTransaction.READ_WRITE).objectStore('lend');
+            var request = objectStore.delete(index);
+         
+            request.onsuccess = function(ev)
+            {
+                console.log(ev);
+            };
+         
+            request.onerror = function(ev)
+            {
+                console.log('Error occured', ev.srcElement.error.message);
             };
         };
     }
