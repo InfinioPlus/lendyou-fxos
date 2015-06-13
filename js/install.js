@@ -4,7 +4,6 @@ $(document).ready(function(){
         var installCheck = navigator.mozApps.checkInstalled(manifest_url);
         
         installCheck.onsuccess = function() {
-            alert("caimos por aqui");
             if(installCheck.result) {
                 $('#install-row').hide();
             } else {

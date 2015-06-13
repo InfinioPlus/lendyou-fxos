@@ -1,6 +1,6 @@
 {
-  "name": "Battery",
-  "description": "Battery ofrece una buena plantilla para un indicador de batería / carga in-app con diferentes opciones de visualización, además de las ideas de lo que podría ser cambiado una vez que el nivel de la batería esté bajo.",
+  "name": "Lend You!",
+  "description": "Open Web Application to keep track of things you lent and to whom",
   "launch_path": "/index.html",
   "icons": {
     "128": "/images/icon-128.png",
