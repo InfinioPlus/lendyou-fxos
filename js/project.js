@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    databaseExists();
+    getLends();
+
     $('.input-group.date').datepicker({
     });
     
@@ -16,8 +19,8 @@ $(document).ready(function(){
     });
     
     $('#lend-btn').click(function(){
-        databaseExists();
         addLend($('#lendwhat-txt').val(), $('#lendto-txt').val(), $('#lendwhen-txt').val());
+        getLends();
     });
     
     function databaseExists(){
@@ -66,6 +69,49 @@ $(document).ready(function(){
          
             requestAdd.onfailure = function(e) {
                 alert('Failed to add lend: ' + e);
+            };
+        };
+    }
+    
+    function getLends(){
+        var indexedDB = window.indexedDB || window.webkitIndexedDB || window.msIndexedDB;
+        var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange;
+        var openCopy = indexedDB && indexedDB.open;
+ 
+        var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+ 
+        if (IDBTransaction)
+        {
+            IDBTransaction.READ_WRITE = IDBTransaction.READ_WRITE || 'readwrite';
+            IDBTransaction.READ_ONLY = IDBTransaction.READ_ONLY || 'readonly';
+        }
+        
+        
+        var html = '';
+        
+        var request = indexedDB.open('lendyou6');
+        request.onsuccess = function(e)
+        {
+            idb = e.target.result;
+            var transaction = idb.transaction('lend', IDBTransaction.READ_ONLY);
+            var objectStore = transaction.objectStore('lend');
+         
+            objectStore.openCursor().onsuccess = function(event)
+            {
+                var cursor = event.target.result;
+                if (cursor)
+                {
+                    html += '<li class="list-group-item"> <a href="#">';
+                    html += 'Lend my ' + cursor.value.lendwhat + ' to ' + cursor.value.lendto + ' on ' + cursor.value.lendwhen;
+                    html += '<span class="pull-right"><span class="glyphicon glyphicon-remove"></span></span></a></li>';
+                
+                    cursor.continue();
+                }
+                else
+                {
+                    // we fall here when all entries are displayed
+                     $('#lends-list').html(html);
+                }
             };
         };
     }
