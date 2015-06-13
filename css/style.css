@@ -1,0 +1,9 @@
+.container{
+	padding: 100px;
+}
+h1{
+	text-align: center;	
+	color: rgba(52, 152, 219,1.0);	
+	font-family: 'Lobster', cursive;
+	font-size: 100px;
+}
