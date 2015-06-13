@@ -7,7 +7,7 @@ $(document).ready(function(){
             if(installCheck.result) {
                 $('#install-row').hide();
             } else {
-                $('#install-row').click(function(ev){
+                $('#install-btn').click(function(ev){
                     ev.preventDefault();
                     
                     var installLocFind = navigator.mozApps.install(manifest_url);
