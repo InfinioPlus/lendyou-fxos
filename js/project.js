@@ -80,7 +80,7 @@ $(document).ready(function(){
             };
          
             requestAdd.onfailure = function(e) {
-                alert('Failed to add lend: ' + e);
+                swal('Failed to add lend: ' + e);
             };
         };
     }
@@ -130,25 +130,25 @@ $(document).ready(function(){
                         var index = $(this).parent().children().index(this);
                         
                         swal({
-						  title: "Are you sure you want to delete this record?",
-						  text: "You will not be able to recover this!",
-						  type: "warning",
-						  showCancelButton: true,
-						  confirmButtonColor: "#DD6B55",
-						  confirmButtonText: "Yes, delete it!",
-						  cancelButtonText: "No, cancel please!",
-						  closeOnConfirm: false,
-						  closeOnCancel: false
-						},
-						function(isConfirm){
-						  if (isConfirm) {
-							swal("Deleted!", "Your record has been deleted.", "success");
-							deleteLend(primaryKeys[index]);
-                            getLends();
-						  } else {
-								swal("Cancelled", "Deletion Cancelled :)", "error");
-						  }
-						});
+			  title: "Are you sure you want to delete this record?",
+			  text: "You will not be able to recover this!",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonColor: "#DD6B55",
+			  confirmButtonText: "Yes, delete it!",
+			  cancelButtonText: "No, cancel please!",
+			  closeOnConfirm: false,
+			  closeOnCancel: false
+			},
+			function(isConfirm){
+			  if (isConfirm) {
+				swal("Deleted!", "Your record has been deleted.", "success");
+				deleteLend(primaryKeys[index]);
+                            	getLends();
+			  } else {
+				swal("Cancelled", "Deletion Cancelled :)", "error");
+			  }
+			});
                     });
                 }
             };
