@@ -9,7 +9,7 @@ $(document).ready(function(){
     $('#new-lend').hide();
     
     $('#new-lend-btn').click(function(){
-        $('#new-lend').show();
+        $('#new-lend').slideToggle('slow');
     });
     
     $('#close-btn').click(function(){
