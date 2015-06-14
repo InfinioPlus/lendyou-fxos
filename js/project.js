@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var primaryKeys = [];
+    var primaryKeys;	// Stores Lends 
     databaseExists();
     getLends();
 
