@@ -17,15 +17,19 @@ $(document).ready(function(){
     });
     
     $('#lend-btn').click(function(){
-        addLend($('#lendwhat-txt').val(), $('#lendto-txt').val(), $('#lendwhen-txt').val());
-        getLends();
+		if($('#lendwhat-txt').val()!='' || $('#lendto-txt').val()!='' || $('#lendwhen-txt').val()!=''){
+			addLend($('#lendwhat-txt').val(), $('#lendto-txt').val(), $('#lendwhen-txt').val());
+			getLends();
+		}
+		else
+			alert("Please enter a lend!");
     });
     
     function clearForm(){
         $('#lendwhat-txt').val('');
         $('#lendto-txt').val('');
         $('#lendwhen-txt').val('');
-        $('#new-lend').hide();
+        $('#new-lend').slideToggle('slow');
     }
     
     function databaseExists(){
