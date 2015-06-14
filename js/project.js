@@ -17,12 +17,13 @@ $(document).ready(function(){
     });
     
     $('#lend-btn').click(function(){
+	// Do not add until all fields all filled. 
 	if($('#lendwhat-txt').val()!='' && $('#lendto-txt').val()!='' && $('#lendwhen-txt').val()!=''){
 		addLend($('#lendwhat-txt').val(), $('#lendto-txt').val(), $('#lendwhen-txt').val());
 		getLends();
 	}
 	else{
-		alert("Please enter the missing field(s).");
+		swal("Please enter the missing field(s).");
 	}
     });
     
@@ -51,11 +52,11 @@ $(document).ready(function(){
     }
     
     function addLend(what, who, when){
-        var indexedDB = window.indexedDB || window.webkitIndexedDB || window.msIndexedDB;
-        var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange;
+        var indexedDB = window.indexedDB || window.webkitIndexedDB || window.msIndexedDB || window.mozIndexedDB;
+        var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
         var openCopy = indexedDB && indexedDB.open;
  
-        var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+        var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
  
         if (IDBTransaction)
         {
@@ -74,7 +75,7 @@ $(document).ready(function(){
             var requestAdd = store.add({lendwhat: what, lendto: who, lendwhen: when});
          
             requestAdd.onsuccess = function(e) {
-                alert('Lend added successfully');
+                swal('Lend added successfully','','success');
                 clearForm();
             };
          
@@ -85,11 +86,11 @@ $(document).ready(function(){
     }
     
     function getLends(){
-        var indexedDB = window.indexedDB || window.webkitIndexedDB || window.msIndexedDB;
-        var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange;
+        var indexedDB = window.indexedDB || window.webkitIndexedDB || window.msIndexedDB || window.mozIndexedDB;
+        var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
         var openCopy = indexedDB && indexedDB.open;
  
-        var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+        var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
  
         if (IDBTransaction)
         {
@@ -128,11 +129,26 @@ $(document).ready(function(){
                      $('#lends-list li').click(function(){
                         var index = $(this).parent().children().index(this);
                         
-                        var r = confirm('Are you sure you want to delete current record?');
-                        if (r == true) {
-                            deleteLend(primaryKeys[index]);
+                        swal({
+						  title: "Are you sure you want to delete this record?",
+						  text: "You will not be able to recover this!",
+						  type: "warning",
+						  showCancelButton: true,
+						  confirmButtonColor: "#DD6B55",
+						  confirmButtonText: "Yes, delete it!",
+						  cancelButtonText: "No, cancel please!",
+						  closeOnConfirm: false,
+						  closeOnCancel: false
+						},
+						function(isConfirm){
+						  if (isConfirm) {
+							swal("Deleted!", "Your record has been deleted.", "success");
+							deleteLend(primaryKeys[index]);
                             getLends();
-                        }
+						  } else {
+								swal("Cancelled", "Deletion Cancelled :)", "error");
+						  }
+						});
                     });
                 }
             };
@@ -140,11 +156,11 @@ $(document).ready(function(){
     }
     
     function deleteLend(index){
-        var indexedDB = window.indexedDB || window.webkitIndexedDB || window.msIndexedDB;
-        var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange;
+        var indexedDB = window.indexedDB || window.webkitIndexedDB || window.msIndexedDB || window.mozIndexedDB;
+        var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
         var openCopy = indexedDB && indexedDB.open;
  
-        var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+        var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
  
         if (IDBTransaction)
         {
