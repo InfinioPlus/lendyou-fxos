@@ -17,12 +17,13 @@ $(document).ready(function(){
     });
     
     $('#lend-btn').click(function(){
-		if($('#lendwhat-txt').val()!='' || $('#lendto-txt').val()!='' || $('#lendwhen-txt').val()!=''){
-			addLend($('#lendwhat-txt').val(), $('#lendto-txt').val(), $('#lendwhen-txt').val());
-			getLends();
-		}
-		else
-			alert("Please enter a lend!");
+	if($('#lendwhat-txt').val()!='' && $('#lendto-txt').val()!='' && $('#lendwhen-txt').val()!=''){
+		addLend($('#lendwhat-txt').val(), $('#lendto-txt').val(), $('#lendwhen-txt').val());
+		getLends();
+	}
+	else{
+		alert("Please enter the missing field(s).");
+	}
     });
     
     function clearForm(){
