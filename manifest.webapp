@@ -10,6 +10,7 @@
     "name": "Harsh Vardhan & Jorge Gomez",
     "url": "https://github.com/royalharsh , https://github.com/GhostAlgorithm"
   },
-  "permissions": {
-  }
+  "permissions": {},
+  "default_locale": "en",
+  "fullscreen": true
 }

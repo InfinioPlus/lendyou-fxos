@@ -37,7 +37,10 @@ body.stop-scrolling {
       margin-left: 0;
       margin-right: 0;
       left: 15px;
-      right: 15px; } }
+      right: 15px; 
+	  bottom: 25px;
+	  } 
+	}
   .sweet-alert h2 {
     color: #575757;
     font-size: 30px;

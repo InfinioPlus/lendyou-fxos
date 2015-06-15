@@ -10,3 +10,18 @@ h1{
 body{
 	background: url("http://i.imgur.com/07t2mb2.gif");
 }
+@media(max-width: 500px){
+	.container{
+		padding: 40px 0px 0px 0px;
+	}
+	h1{
+		text-align: center;	
+		color: rgba(52, 152, 219,1.0);	
+		font-family: 'Lobster', cursive;
+		font-size: 80px;
+	}
+	.row{
+		padding: 10px;
+	}
+
+}
