@@ -10,9 +10,17 @@ h1{
 body{
 	background: url("http://i.imgur.com/07t2mb2.gif");
 }
+.lend{
+	position: absolute;
+	top: 35%;
+	left: 33%;
+	margin-top: -50px;
+	margin-left: -150px;
+	border-radius: 25px;
+}
 @media(max-width: 500px){
 	.container{
-		padding: 40px 0px 0px 0px;
+		padding: 95px 0px 0px 0px;
 	}
 	h1{
 		text-align: center;	
@@ -22,6 +30,15 @@ body{
 	}
 	.row{
 		padding: 10px;
+	}
+	.lend{
+		position: absolute;
+		margin: 0 auto;
+		top: 20px;
+		border-radius: 25px;
+	}
+	body{
+		text-align: center;
 	}
 
 }
