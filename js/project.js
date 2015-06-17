@@ -2,7 +2,41 @@ $(document).ready(function(){
     var primaryKeys;	// Stores Lends 
     databaseExists();
     getLends();
+    
+    var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+]; 
 
+    var getContacts = function(str){
+        return function findMatches(q, cb) {
+            var matches, substringRegex;
+            
+            matches = ['Otorrinolaringologo', 'Tails'];
+            
+            cb(matches);
+        }; 
+    }
+
+    // check if it is Firefox OS
+    if (navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf("Mobile") > -1)){
+        $('#lendto-txt').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+        },
+        {
+            name: 'states',
+            source: getContacts(states)
+        }); 
+    }
+    
     $('.input-group.date').datepicker({
     });
     
