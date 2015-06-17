@@ -1,8 +1,30 @@
 $(document).ready(function(){
     var primaryKeys;	// Stores Lends 
+    var phoneContacts = [];
     databaseExists();
     getLends();
+    getPhoneContacts();
 
+    function getPhoneContacts(){
+        var filter = {
+            sortBy: 'familyName',
+            sortOrder: 'ascending'
+        }
+        
+        var request = window.navigator.mozContacts.getAll(filter);
+        
+        request.onsuccess = function () {
+            if(this.result) {
+                phoneContacts.push(this.result.name);
+                this.continue();
+            }
+        }
+
+        request.onerror = function () {
+            alert('Something goes wrong!');
+        }
+    }
+    
     var getContacts = function(){
         return function findMatches(q, cb) {
             var matches, substringRegex;
@@ -15,6 +37,7 @@ $(document).ready(function(){
 
     // check if it is Firefox OS
     if (navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf("Mobile") > -1){
+    
         $('#lendto-txt').typeahead({
             hint: true,
             highlight: true,
