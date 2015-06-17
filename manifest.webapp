@@ -1,4 +1,5 @@
 {
+  "fullscreen": "true",
   "name": "Lend You!",
   "description": "Open Web Application to keep track of things you lent and to whom",
   "launch_path": "/index.html",
@@ -10,7 +11,13 @@
     "name": "Harsh Vardhan & Jorge Gomez",
     "url": "https://github.com/royalharsh , https://github.com/GhostAlgorithm"
   },
-  "permissions": {},
-  "default_locale": "en",
-  "fullscreen": true
+  "type": "privileged",
+  "csp" : "default-src *; script-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline'",
+  "permissions": {
+    "contacts": {
+    "description": "Required for autocompletion in the share screen",
+    "access": "readonly"
+    }
+  },
+  "default_locale": "en"
 }
