@@ -15,7 +15,7 @@ $(document).ready(function(){
         
         request.onsuccess = function () {
             if(this.result) {
-                phoneContacts.push(this.result.name);
+                phoneContacts.push(this.result.name[0]);
                 this.continue();
             }
         }
@@ -29,7 +29,15 @@ $(document).ready(function(){
         return function findMatches(q, cb) {
             var matches, substringRegex;
             
-            matches = ['Otorrinolaringologo', 'Tails'];
+            matches = [];
+
+            substrRegex = new RegExp(q, 'i');
+ 
+            $.each(phoneContacts, function(i, str) {
+                if (substrRegex.test(str)) {
+                    matches.push(str);
+                }
+            });
             
             cb(matches);
         }; 
