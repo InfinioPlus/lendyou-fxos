@@ -4,7 +4,7 @@
 h1{
 	text-align: center;	
 	color: rgba(52, 152, 219,1.0);	
-	font-family: 'Lobster', cursive;
+	font-family: cartoon_blocks;
 	font-size: 120px;
 }
 body{
@@ -73,7 +73,6 @@ body{
   margin: 0;
 }
 
-
 @media(max-width: 500px){
 	.container{
 		padding: 95px 0px 0px 0px;
@@ -81,7 +80,7 @@ body{
 	h1{
 		text-align: center;	
 		color: rgba(52, 152, 219,1.0);	
-		font-family: 'Lobster', cursive;
+		font-family: cartoon_blocks;
 		font-size: 80px;
 	}
 	.row{
