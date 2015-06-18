@@ -21,7 +21,7 @@ $(document).ready(function(){
         }
 
         request.onerror = function () {
-            alert('Something goes wrong!');
+            swal('Something goes wrong!');
         }
     }
     
