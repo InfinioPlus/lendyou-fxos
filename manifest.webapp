@@ -1,5 +1,5 @@
 {
-  "fullscreen": "true",
+  "fullscreen": true,
   "name": "Lend You!",
   "description": "Open Web Application to keep track of things you lent and to whom",
   "launch_path": "/index.html",
