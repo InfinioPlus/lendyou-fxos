@@ -3,7 +3,9 @@ $(document).ready(function(){
     var phoneContacts = [];
     databaseExists();
     getLends();
-    getPhoneContacts();
+    if (navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf("Mobile") > -1){
+        getPhoneContacts();
+    }
 
     function getPhoneContacts(){
         var filter = {
@@ -45,7 +47,6 @@ $(document).ready(function(){
 
     // check if it is Firefox OS
     if (navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf("Mobile") > -1){
-    
         $('#lendto-txt').typeahead({
             hint: true,
             highlight: true,
