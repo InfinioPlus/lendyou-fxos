@@ -1,0 +1,15 @@
+{
+  "name": "Lend You!",
+  "description": "Open Web Application to keep track of things you lent and to whom",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "/images/icon-128.png",
+    "512": "/images/icon-512.png"
+  },
+  "developer": {
+    "name": "Harsh Vardhan & Jorge Gomez",
+    "url": "https://github.com/royalharsh , https://github.com/GhostAlgorithm"
+  },
+  "permissions": {},
+  "default_locale": "en"
+}

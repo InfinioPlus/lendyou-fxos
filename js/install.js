@@ -1,6 +1,6 @@
 $(document).ready(function(){
     if(('mozApps' in navigator) && !(navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf("Mobile") > -1)) {
-        var manifest_url = location.href + 'manifest.webapp';
+        var manifest_url = location.href + 'manifest_desktop/manifest_desktop.webapp';
         var installCheck = navigator.mozApps.checkInstalled(manifest_url);
         
         installCheck.onsuccess = function() {
