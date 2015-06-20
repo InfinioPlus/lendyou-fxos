@@ -84,7 +84,7 @@ body{
 		font-size: 80px;
 	}
 	.row{
-		padding: 10px;
+		margin: 0px;
 	}
 	.lend{
 		position: absolute;
