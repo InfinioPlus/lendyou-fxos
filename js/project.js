@@ -58,8 +58,7 @@ $(document).ready(function(){
         }); 
     }
     
-    $('.input-group.date').datepicker({
-    });
+    $('.input-group.date').datepicker({});
     
     $('#new-lend').hide();
     
