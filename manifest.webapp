@@ -10,7 +10,7 @@
   },
   "developer": {
     "name": "Harsh Vardhan & Jorge Gomez",
-    "url": "https://github.com/royalharsh , https://github.com/GhostAlgorithm"
+    "url": "https://github.com/InfinioPlus"
   },
   "type": "privileged",
   "csp" : "default-src *; script-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline'",
